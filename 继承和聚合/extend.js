@@ -49,6 +49,15 @@
             superClass.prototype.constructor = superClass;
         }
     }
+    //问题:为什么通过中间空对象?
+    // 1. 如果让子类直接继承自父类,那么相应的在实例化子类的时候,要向父类传递些参数
+    // 1.1 extend 函数代码里面就要包含  Author.superClass.constructor.call(this,name); 
+    //     这类代码
+    // 2. 空对象是没有参数的
+
+    //问题: why 对子类扩展属性 superClass?
+    // 1.对原型链向上的引用
+    // 2.Author.superClass.constructor.call(this,name); 这样实现松耦合.
 
     //测试
     function Author(name,books) {
